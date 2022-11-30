@@ -78,13 +78,29 @@
     // --------------------------------------------------------------
     //
     // test if a specific row on this board contains a conflict
-    hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+    hasRowConflictAt: function(rowIndex) { // 1
+      var row = this.get(rowIndex);
+      var intialValue = 0;
+      for (var j = 0; j < row.length; j++) {
+        if (row[j] !== 0) {
+          intialValue += row[j];
+        }
+        if (intialValue > 1) {
+          return true;
+        }
+      }
+      return false;
     },
 
     // test if any rows on this board contain conflicts
-    hasAnyRowConflicts: function() {
-      return false; // fixme
+    hasAnyRowConflicts: function() { //board
+      var size = this.get('n');
+      for ( var i = 0; i < size; i++) {
+        if (this.hasRowConflictAt(i)) {
+          return true;
+        }
+      }
+      return false;
     },
 
 
@@ -94,12 +110,29 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      var intialValue = 0;
+      var size = this.get('n');
+      for (var i = 0; i < size; i++) {
+        var row = this.get(i);
+        if (row[colIndex] !== 0) {
+          intialValue += row[colIndex];
+        }
+        if (intialValue > 1) {
+          return true;
+        }
+      }
+      return false;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var size = this.get('n');
+      for (var col = 0; col < size; col++) {
+        if (this.hasColConflictAt(col)) {
+          return true;
+        }
+      }
+      return false;
     },
 
 
