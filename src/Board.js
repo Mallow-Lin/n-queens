@@ -62,7 +62,7 @@
     },
 
 
-/*
+    /*
          _             _     _
      ___| |_ __ _ _ __| |_  | |__   ___ _ __ ___ _
     / __| __/ _` | '__| __| | '_ \ / _ \ '__/ _ (_)
@@ -145,12 +145,12 @@
 
       var initialValue = 0; // value we add in the end
       var size = this.get('n'); // gets us SIZE
-      var columnIndex;
-      var rowIndex;
+      var columnIndex,
+        rowIndex;
       // used to identify our (column, rowIndex) ie: (X,Y)
       if (majorDiagonalColumnIndexAtFirstRow >= 0) {
         columnIndex = majorDiagonalColumnIndexAtFirstRow;
-        rowIndex = 0
+        rowIndex = 0;
       } else {
         columnIndex = 0;
         rowIndex = Math.abs(majorDiagonalColumnIndexAtFirstRow);
@@ -158,7 +158,7 @@
 
       while (columnIndex < size && rowIndex < size) {
         var row = this.get(rowIndex);
-        if(row[columnIndex] === 1) {
+        if (row[columnIndex] === 1) {
           initialValue++;
         }
         if (initialValue > 1) {
@@ -190,7 +190,7 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       var size = this.get('n');
-      for (var i = (-size+1); i < size; i++) {
+      for (var i = (-size + 1); i < size; i++) {
         if (this.hasMajorDiagonalConflictAt(i)) {
           return true;
         }
@@ -207,12 +207,12 @@
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
       var initialValue = 0; // value we add in the end
       var size = this.get('n'); // gets us SIZE
-      var columnIndex;
-      var rowIndex;
+      var columnIndex,
+        rowIndex;
       // used to identify our (column, rowIndex) ie: (X,Y)
-      if (minorDiagonalColumnIndexAtFirstRow <= size-1) {
+      if (minorDiagonalColumnIndexAtFirstRow <= size - 1) {
         columnIndex = minorDiagonalColumnIndexAtFirstRow;
-        rowIndex = 0
+        rowIndex = 0;
       } else {
         columnIndex = size - 1;
         rowIndex = minorDiagonalColumnIndexAtFirstRow - (size - 1);
@@ -220,7 +220,7 @@
 
       while (columnIndex > -1 && rowIndex < size) {
         var row = this.get(rowIndex);
-        if(row[columnIndex] === 1) {
+        if (row[columnIndex] === 1) {
           initialValue++;
         }
         if (initialValue > 1) {
@@ -235,7 +235,7 @@
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
       var size = this.get('n');
-      for (var i = 0; i < 2*size - 1; i++) { // 0 - 6
+      for (var i = 0; i < 2 * size - 1; i++) { // 0 - 6
         if (this.hasMinorDiagonalConflictAt(i)) { // checks if has conflict
           return true;
         }
