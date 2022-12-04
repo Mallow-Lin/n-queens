@@ -81,8 +81,8 @@
     hasRowConflictAt: function(rowIndex) { // 1
       var row = this.get(rowIndex);
       var intialValue = 0;
-      for (var j = 0; j < row.length; j++) {
-        if (row[j] !== 0) {
+      for (var col = 0; col < row.length; col++) {
+        if (row[col] !== 0) {
           intialValue ++;
         }
         if (intialValue > 1) {
@@ -95,8 +95,8 @@
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() { //board
       var size = this.get('n');
-      for ( var i = 0; i < size; i++) {
-        if (this.hasRowConflictAt(i)) {
+      for ( var rowIndex = 0; rowIndex < size; rowIndex++) {
+        if (this.hasRowConflictAt(rowIndex)) {
           return true;
         }
       }
@@ -112,8 +112,8 @@
     hasColConflictAt: function(colIndex) {
       var intialValue = 0;
       var size = this.get('n');
-      for (var i = 0; i < size; i++) {
-        var row = this.get(i);
+      for (var rowIndex = 0; rowIndex < size; rowIndex++) {
+        var row = this.get(rowIndex);
         if (row[colIndex] !== 0) {
           intialValue ++;
         }
@@ -145,8 +145,8 @@
 
       var initialValue = 0; // value we add in the end
       var size = this.get('n'); // gets us SIZE
-      var columnIndex,
-        rowIndex;
+      var columnIndex;
+      var rowIndex;
       // used to identify our (column, rowIndex) ie: (X,Y)
       if (majorDiagonalColumnIndexAtFirstRow >= 0) {
         columnIndex = majorDiagonalColumnIndexAtFirstRow;
